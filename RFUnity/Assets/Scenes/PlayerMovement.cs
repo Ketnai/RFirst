@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float jms;
     public float ms;
+	public float fs;
     public Rigidbody2D rb;
     bool IsGrounded = false;
     private void Awake()
@@ -29,7 +30,13 @@ public class PlayerMovement : MonoBehaviour
 
         // Vector2 run = transform.right * ms * Time.fixedDeltaTime;
         // rb.MovePosition(rb.position + run);
-
+		if (Input.GetKeyDown(KeyCode.Z))
+		{
+			if(IsGrounded == false)
+			{
+				rb.AddForce(Vector2.down * fs);
+			}
+		}
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
